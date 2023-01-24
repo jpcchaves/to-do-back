@@ -28,19 +28,19 @@ public class AuthServices {
     public ResponseEntity signin(AccountCredentialsVO data) {
         try {
 
-            var username = data.getUserName();
+            var userName = data.getUserName();
             var password = data.getPassword();
 
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));
 
-            var user = userRepository.findByUsername(username);
+            var user = userRepository.findByUsername(userName);
 
             var tokenResponse = new TokenVO();
 
             if (user != null) {
-                tokenResponse = tokenProvider.createAccessToken(username, user.getRoles());
+                tokenResponse = tokenProvider.createAccessToken(userName, user.getRoles());
             } else {
-                throw new UsernameNotFoundException("Username " + username + " not found!");
+                throw new UsernameNotFoundException("Username " + userName + " not found!");
             }
 
             return ResponseEntity.ok(tokenResponse);
