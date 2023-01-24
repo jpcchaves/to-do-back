@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class TokenVO implements Serializable {
 
-    private String userName;
+    private String username;
     private Boolean authenticated;
     private Date created;
     private Date expiration;
@@ -15,8 +15,8 @@ public class TokenVO implements Serializable {
     public TokenVO() {
     }
 
-    public TokenVO(String userName, Boolean authenticated, Date created, Date expiration, String accessToken, String refreshToken) {
-        this.userName = userName;
+    public TokenVO(String username, Boolean authenticated, Date created, Date expiration, String accessToken, String refreshToken) {
+        this.username = username;
         this.authenticated = authenticated;
         this.created = created;
         this.expiration = expiration;
@@ -24,8 +24,12 @@ public class TokenVO implements Serializable {
         this.refreshToken = refreshToken;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Boolean getAuthenticated() {
@@ -75,7 +79,7 @@ public class TokenVO implements Serializable {
 
         TokenVO tokenVO = (TokenVO) o;
 
-        if (!userName.equals(tokenVO.userName)) return false;
+        if (!username.equals(tokenVO.username)) return false;
         if (!authenticated.equals(tokenVO.authenticated)) return false;
         if (!created.equals(tokenVO.created)) return false;
         if (!expiration.equals(tokenVO.expiration)) return false;
@@ -85,7 +89,7 @@ public class TokenVO implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = userName.hashCode();
+        int result = username.hashCode();
         result = 31 * result + authenticated.hashCode();
         result = 31 * result + created.hashCode();
         result = 31 * result + expiration.hashCode();

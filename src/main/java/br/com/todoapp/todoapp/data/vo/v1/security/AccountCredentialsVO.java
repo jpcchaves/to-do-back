@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class AccountCredentialsVO implements Serializable {
 
-    private String userName;
+    private String username;
     private String password;
 
-    public AccountCredentialsVO(String userName, String password) {
-        this.userName = userName;
+    public AccountCredentialsVO(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -35,13 +35,13 @@ public class AccountCredentialsVO implements Serializable {
 
         AccountCredentialsVO that = (AccountCredentialsVO) o;
 
-        if (!userName.equals(that.userName)) return false;
+        if (!username.equals(that.username)) return false;
         return password.equals(that.password);
     }
 
     @Override
     public int hashCode() {
-        int result = userName.hashCode();
+        int result = username.hashCode();
         result = 31 * result + password.hashCode();
         return result;
     }
